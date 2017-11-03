@@ -19,6 +19,7 @@ function scrollToBotton () {
 }
 
 // MARK: Socket
+// Socket - Deparam
 socket.on('connect', function () {
   var params = jQuery.deparam(window.location.search);
 
@@ -32,6 +33,7 @@ socket.on('connect', function () {
   });
 });
 
+// Socket - Update user list
 socket.on('updateUserList', function (users) {
   var ol = jQuery('<ol></ol>');
 
@@ -42,6 +44,7 @@ socket.on('updateUserList', function (users) {
   jQuery('#users').html(ol);
 })
 
+// Socket - Update new messages
 socket.on('newMessage', function (message) {
   var formattedTime = moment(message.createAt).format('h:mm a');
   var template = jQuery('#message-template').html();
@@ -55,10 +58,12 @@ socket.on('newMessage', function (message) {
   scrollToBotton();
 });
 
+// Socket - User disconnected
 socket.on('disconnect', function () {
   console.log('Disconnected from server');
 });
 
+// Socket - Update new location message
 socket.on('newLocationMessage', function (message) {
   var formattedTime = moment(message.createAt).format('h:mm a');
   var template = jQuery('#location-message-template').html();

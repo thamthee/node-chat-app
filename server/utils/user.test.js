@@ -9,16 +9,13 @@ var users;
     users = new Users();
     users.users = [{
       id: '1',
-      name: 'Mike',
-      room: 'Node'
+      name: 'Mike'
     }, {
       id: '2',
-      name: 'Jen',
-      room: 'Test'
+      name: 'Jen'
     }, {
       id: '3',
-      name: 'John',
-      room: 'Node'
+      name: 'John'
     }];
   });
 
@@ -26,10 +23,9 @@ var users;
     var users = new Users();
     var user = { 
       id: '123',
-      name: 'Mike',
-      room: 'Test Room'
+      name: 'Mike'
     };
-    var resUser = users.addUser(user.id, user.name, user.room);
+    var resUser = users.addUser(user.id, user.name);
 
     expect(users.users).toEqual([user]);
   });
@@ -63,15 +59,9 @@ var users;
     expect(user).toNotExist();
   });
 
-  it('should return name for Node', () => {
-    var userList = users.getUserList('Node');
+  it('should return list name', () => {
+    var userList = users.getUserList();
 
-    expect(userList).toEqual(['Mike', 'John']);
-  });
-
-  it('should return name for Test', () => {
-    var userList = users.getUserList('Test');
-
-    expect(userList).toEqual(['Jen']);
+    expect(userList).toEqual(['Mike', 'Jen','John']);
   });
 });

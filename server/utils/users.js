@@ -8,8 +8,8 @@ class Users {
     this.users = [];
   }
 
-  addUser (id, name, room) {
-    var user = {id, name, room};
+  addUser (id, name) {
+    var user = {id, name};
 
     this.users.push(user);
 
@@ -30,26 +30,11 @@ class Users {
     return this.users.filter((user) => user.id === id)[0];
   }
 
-  getUserList (room) {
-    var users = this.users.filter((user) => user.room === room);
-    var nameArray = users.map((user) => user.name);
+  getUserList () {
+    var nameArray = this.users.map((user) => user.name);
 
     return nameArray;
   }
 }
 
 module.exports = {Users};
-// class Person {
-//   constructor (name, age) {
-//     this.name = name
-//     this.age = age
-//   }
-
-//   getUserDescription () {
-//     return `${this.name} is ${this.age} years old.`;
-//   }
-// }
-
-// var me = new Person('Mike', 32);
-// var description = me.getUserDescription();
-// console.log(description);
